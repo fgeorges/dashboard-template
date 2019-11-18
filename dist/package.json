@@ -1,0 +1,26 @@
+{
+  "name": "mlcontrol-view",
+  "version": "0.0.1",
+  "description": "Private stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Florent Georges",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
+    "bootstrap": "^4.3.1",
+    "bootstrap-select": "^1.13.12",
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.4.1",
+    "jquery-hammerjs": "^2.0.0",
+    "jquery-pjax": "^2.0.1",
+    "jquery-slimscroll": "^1.3.8",
+    "jquery-sparkline": "^2.4.0",
+    "line-awesome": "^1.2.1",
+    "pace-js": "^1.0.2",
+    "popper.js": "^1.16.0",
+    "widgster": "^1.0.0"
+  }
+}

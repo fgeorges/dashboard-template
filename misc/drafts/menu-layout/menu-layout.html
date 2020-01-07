@@ -53,6 +53,7 @@
     .ui.side.menu {
         color: #707070;
         background-color: #fafafa;
+        overflow: auto;
     }
     .ui.inverted.side.menu {
         background-color: rgb(49, 57, 71);
@@ -60,6 +61,9 @@
     .ui.side.menu {
         height: 100%;
         margin-top: var(--menu-height);
+    }
+    .ui.side.menu span.item {
+        margin-bottom: 100px;
     }
     .ui.side.menu.expanded {
         width: var(--sm-full-width);
@@ -96,17 +100,92 @@
 
   <div class="ui fixed vertical icon side menu collapsed">
     <a class="item">
-      <i class="gamepad icon"></i>
+      <i class="database icon"></i>
       <span>Foo</span>
     </a>
     <a class="item active">
-      <i class="video camera icon"></i>
+      <i class="hdd outline icon"></i>
       <span>Bar</span>
     </a>
     <a class="item">
-      <i class="video play icon"></i>
+      <i class="save outline icon"></i>
       <span>Foo bar bla foo bar bla foo bar bla</span>
     </a>
+
+    <a class="item">
+      <i class="desktop icon"></i>
+      <span>Foo</span>
+    </a>
+    <a class="item">
+      <i class="server icon"></i>
+      <span>Bar</span>
+    </a>
+    <a class="item">
+      <i class="upload icon"></i>
+      <span>Foo bar bla foo bar bla foo bar bla</span>
+    </a>
+    <a class="item">
+      <i class="download icon"></i>
+      <span>Foo</span>
+    </a>
+    <a class="item">
+      <i class="database icon"></i>
+      <span>Foo</span>
+    </a>
+    <a class="item">
+      <i class="hdd outline icon"></i>
+      <span>Bar</span>
+    </a>
+    <a class="item">
+      <i class="save outline icon"></i>
+      <span>Foo bar bla foo bar bla foo bar bla</span>
+    </a>
+    <a class="item">
+      <i class="desktop icon"></i>
+      <span>Foo</span>
+    </a>
+    <a class="item">
+      <i class="server icon"></i>
+      <span>Bar</span>
+    </a>
+    <a class="item">
+      <i class="upload icon"></i>
+      <span>Foo bar bla foo bar bla foo bar bla</span>
+    </a>
+    <a class="item">
+      <i class="download icon"></i>
+      <span>Foo</span>
+    </a>
+    <a class="item">
+      <i class="database icon"></i>
+      <span>Foo</span>
+    </a>
+    <a class="item">
+      <i class="hdd outline icon"></i>
+      <span>Bar</span>
+    </a>
+    <a class="item">
+      <i class="save outline icon"></i>
+      <span>Foo bar bla foo bar bla foo bar bla</span>
+    </a>
+    <a class="item">
+      <i class="desktop icon"></i>
+      <span>Foo</span>
+    </a>
+    <a class="item">
+      <i class="server icon"></i>
+      <span>Bar</span>
+    </a>
+    <a class="item">
+      <i class="upload icon"></i>
+      <span>Foo bar bla foo bar bla foo bar bla</span>
+    </a>
+    <a class="item">
+      <i class="download icon"></i>
+      <span>Foo</span>
+    </a>
+    <span class="item"></span>
+
     <a class="toggle item" onclick="toggleSideMenu()">
       <i class="angle double right icon"></i>
       <span>Collapse menu</span>

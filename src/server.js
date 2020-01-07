@@ -4,8 +4,10 @@
 
 const koa     = require('koa');
 const logger  = require('koa-logger');
+const session = require('koa-session');
 const views   = require('koa-views');
 const hbs     = require('handlebars');
+// const passport = require('koa-passport');
 const mount   = require('koa-mount');
 const serve   = require('koa-static');
 const fs      = require('fs');
@@ -49,6 +51,19 @@ module.exports = {
 
         app.use(logger());
 
+        // sessions
+        app.keys = ['super-secret-key'];
+        // TODO: Store sessions...?
+        app.use(session({}, app));
+
+        // // body parser
+        // app.use(bodyParser());
+
+        // authentication
+        // require('./auth');
+        // app.use(passport.initialize());
+        // app.use(passport.session());
+
         app.use(mount('/fonts',        serve(path.join(params.views, 'fonts'))));
         app.use(mount('/images',       serve(path.join(params.views, 'images'))));
         app.use(mount('/js',           serve(path.join(params.views, 'js'))));
@@ -63,6 +78,7 @@ module.exports = {
 
         // routes
         app.use(require('./routes/index').routes());
+        app.use(require('./routes/session').routes());
 
         // start the server
         app.listen(params.port, () => {

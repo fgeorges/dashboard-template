@@ -310,8 +310,7 @@ $(function () {
     function pageLoad() {
         $('.widget').widgster();
         $('.selectpicker').selectpicker();
-
-        createCharts();
+//        createCharts();
 //        initCalendar();
         initTasks();
     }

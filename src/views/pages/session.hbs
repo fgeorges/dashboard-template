@@ -1,0 +1,93 @@
+{{#extend "layout" title="Dashboard - Session"}}
+    {{#content "sidebar"}}
+        {{> sidebar active="session"}}
+    {{/content}}
+    {{#content "head"}}
+        <template id="session-row">
+            <tr>
+                <td class="align-middle">the Bird</td>
+                <td class="align-middle">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" value="">
+                            <div class="input-group-append">
+                                <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <ul class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(227px, 34px, 0px);">
+                                    <li><a class="dropdown-item save-session-field"   href="#">Save</a></li>
+                                    <li><a class="dropdown-item remove-session-field" href="#">Remove</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </template>
+    {{/content}}
+    {{#content "content" mode="replace"}}
+        <h1 class="page-title">
+            Session
+            <small>
+                <small>Manage session from your browser</small>
+            </small>
+        </h1>
+        <div class="row">
+            <div class="col-12">
+                <section class="widget mb-xlg">
+                    <header>
+                        <h4>Fields</h4>
+                    </header>
+                    <div class="widget-body">
+                        <p>All the fields in the session on the server.</p>
+                    </div>
+                    <div class="widget-body">
+                        <table id="session-table" class="table table-striped">
+                            <tbody>
+                                <!--
+                                <tr>
+                                    <td class="align-middle">Larry</td>
+                                    <td class="align-middle">the Bird</td>
+                                    <td class="align-middle">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                        <i class="fa fa-caret-down"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(227px, 34px, 0px);">
+                                                        <li><a class="dropdown-item" href="#">Save</a></li>
+                                                        <li><a class="dropdown-item" href="#">Remove</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                -->
+                            </tbody>
+                        </table>
+                        <div class="form-group" style="padding: 0.55rem">
+                            <div class="input-group">
+                                <input type="text" class="form-control" value="" placeholder="Name of the new field..." id="session-field-name">
+                                <div class="input-group-append">
+                                    <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-caret-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(227px, 34px, 0px);">
+                                        <li><a class="dropdown-item" href="#" id="create-session-field">Create</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    {{/content}}
+    {{#content "scripts"}}
+        <!-- page specific js -->
+        <script src="js/session.js"></script>
+    {{/content}}
+{{/extend}}

@@ -16,8 +16,12 @@
 
   <style type="text/css">
     :root {
-        --menu-height: 60px;
-        --sm-width:   225px;
+        --menu-height:            60px;
+        --sm-full-width:         225px;
+        --sm-full-toggle-width:  223px;
+        /* TODO: The width is 'auto', this is just infered, anything better to do? (other than JS) */
+        --sm-small-width:         49px;
+        --sm-small-toggle-width:  48.5px;
     }
     body {
         background-color: #FFFFFF;
@@ -26,12 +30,17 @@
         margin-right: 1.5em;
     }
     .main.container {
-        margin-top:  var(--menu-height);
-        margin-left: var(--sm-width) !important;
+        margin-top: var(--menu-height);
         margin-right: 0 !important;
         padding: 50px;
         width: auto !important;
         max-width: 100% !important;
+    }
+    .side-menu-expanded {
+        margin-left: var(--sm-full-width) !important;
+    }
+    .side-menu-collapsed {
+        margin-left: var(--sm-small-width) !important;
     }
     .wireframe {
         margin-top: 2em;
@@ -50,23 +59,35 @@
     }
     .ui.side.menu {
         height: 100%;
-        width: var(--sm-width);
         margin-top: var(--menu-height);
+    }
+    .ui.side.menu.expanded {
+        width: var(--sm-full-width);
     }
     .ui.side.menu .toggle.item {
         position: fixed;
         bottom: 0;
-        width: var(--sm-width);
+        background-color: #fafafa;
+        border: 1px;
+    }
+    .ui.side.menu.collapsed .toggle.item {
+        width: var(--sm-small-toggle-width);
+    }
+    .ui.side.menu.expanded .toggle.item {
+        width: var(--sm-full-toggle-width);
     }
 
-    .ui.vertical.menu .item {
+    .ui.side.menu .item {
         color: #707070;
         font-weight: 700;
     }
-    .ui.vertical.menu .item > i.icon, .ui.vertical.menu .item > i.icons {
+    .ui.side.menu .item > i.icon {
         width: 1.18em;
         float: left;
         margin: 0 1em 0 0;
+    }
+    .ui.side.menu.collapsed .item > span {
+        display: none;
     }
   </style>
 
@@ -76,48 +97,31 @@
   <div class="ui fixed vertical icon side menu collapsed">
     <a class="item">
       <i class="gamepad icon"></i>
+      <span>Foo</span>
     </a>
     <a class="item active">
       <i class="video camera icon"></i>
+      <span>Bar</span>
     </a>
     <a class="item">
       <i class="video play icon"></i>
+      <span>Foo bar bla foo bar bla foo bar bla</span>
     </a>
-    <a href="#" class="toggle item" onclick="$('.ui.side.menu').toggle();">
-      <i class="angle double left icon"></i>
-    </a>
-  </div>
-
-  <div class="ui fixed vertical side menu expanded" style="display: none;">
-    <a class="item">
-      <i class="gamepad icon"></i>
-      Foo
-    </a>
-    <a class="item active">
-      <i class="video camera icon"></i>
-      Bar
-    </a>
-    <a class="item">
-      <i class="video play icon"></i>
-      Foo bar bla foo bar bla foo bar bla
-    </a>
-    <a href="#" class="toggle item" onclick="$('.ui.side.menu').toggle();">
-      <i class="angle double left icon"></i>
-      Collapse menu
+    <a class="toggle item" onclick="toggleSideMenu()">
+      <i class="angle double right icon"></i>
+      <span>Collapse menu</span>
     </a>
   </div>
 
   <div class="ui fixed inverted menu">
-    <div class="ui container">
-      <a href="#" class="header item">
-        <img class="logo" src="https://fomantic-ui.com/examples/assets/images/logo.png">
-        Project Name
-      </a>
-      <a href="#" class="header item" onclick="$('.ui.side.menu').toggle();">
-        <i class="content icon"></i>
-        Toggle menu
-      </a>
-    </div>
+    <a href="#" class="header item">
+      <img class="logo" src="https://fomantic-ui.com/examples/assets/images/logo.png">
+      Project Name
+    </a>
+    <a href="#" class="header item" onclick="toggleSideMenu()">
+      <i class="content icon"></i>
+      Toggle menu
+    </a>
   </div>
 
   <!-- initial, more complex/complete top menu -->
@@ -149,7 +153,7 @@
     </div>
   </div-->
 
-  <div class="ui main text container">
+  <div class="ui main text container side-menu-collapsed">
     <h1 class="ui header">Semantic UI Fixed Template</h1>
     <p>This is a basic fixed menu template using fixed size containers.</p>
     <p>A text container is used for the main container, which is useful for single column layouts</p>
@@ -169,5 +173,17 @@
     <img class="wireframe" src="https://fomantic-ui.com/examples/assets/images/wireframe/paragraph.png">
   </div>
 
+  <script>
+    function toggleSideMenu() {
+        const menu = $('.ui.side.menu');
+        // toggle the collapsed/expanded state
+        menu.toggleClass('collapsed expanded icon');
+        // handle the toggler item (left/right arrow, and text)
+        menu.find('.item.toggle i').toggleClass('left right');
+        // toggle the state of elements impacted by the side menu collapse/expansion
+        $('.side-menu-collapsed, .side-menu-expanded')
+            .toggleClass('side-menu-collapsed side-menu-expanded');
+    }
+  </script>
 </body>
 </html>

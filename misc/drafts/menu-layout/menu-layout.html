@@ -29,6 +29,9 @@
     .ui.menu .item img.logo {
         margin-right: 1.5em;
     }
+    .ui.dropdown .menu > .header {
+        text-transform: none;
+    }
     .main.container {
         margin-top: var(--menu-height);
         margin-right: 0 !important;
@@ -93,6 +96,12 @@
     .ui.side.menu.collapsed .item > span {
         display: none;
     }
+
+    /* There must be a way for Fomantic to do it directly... */
+    .ui.inverted.menu .item.green  { background-color: green; }
+    .ui.inverted.menu .item.orange { background-color: orange; }
+    .ui.inverted.menu .item.purple { background-color: purple; }
+    .ui.inverted.menu .item.red    { background-color: red; }
   </style>
 
 </head>
@@ -193,14 +202,64 @@
   </div>
 
   <div class="ui fixed inverted menu">
-    <a href="#" class="header item">
+    <a class="header item">
       <img class="logo" src="https://fomantic-ui.com/examples/assets/images/logo.png">
       Project Name
     </a>
-    <a href="#" class="header item" onclick="toggleSideMenu()">
+    <a class="header item" onclick="toggleSideMenu()">
       <i class="content icon"></i>
       Toggle menu
     </a>
+    <div class="right menu">
+      <div class="ui simple dropdown item">
+        <i class="toolbox icon"></i>
+        Stuff
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <h4 class="ui header">Projects</h4>
+          <a class="item">Foo</a>
+          <a class="item">Bar</a>
+          <a class="item">Stuff</a>
+          <a class="item">Baz</a>
+        </div>
+      </div>
+      <div class="ui simple dropdown item"> <!-- add class e.g. "green" here -->
+        <i class="circle icon"></i>
+        LOCAL
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <h4 class="ui header">Environments</h4>
+          <a class="item">
+            <i class="circle icon"></i>
+            LOCAL
+          </a>
+          <a class="item">
+            <i class="circle icon green"></i>
+            TEST
+          </a>
+          <a class="item">
+            <i class="circle icon orange"></i>
+            PP
+          </a>
+          <a class="item">
+            <i class="circle icon red"></i>
+            PROD
+          </a>
+        </div>
+      </div>
+      <div class="ui simple dropdown item">
+        <i class="user outline icon"></i>
+        admin
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <h4 class="ui header">User admin</h4>
+          <a class="item">Foo</a>
+          <a class="item">Bar</a>
+          <a class="item">Preferences</a>
+          <a class="item">Logout</a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- initial, more complex/complete top menu -->

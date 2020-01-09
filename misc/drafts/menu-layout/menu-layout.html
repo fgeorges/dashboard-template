@@ -16,12 +16,12 @@
 
   <style type="text/css">
     :root {
-        --menu-height:            60px;
+        --menu-height:            45px;
         --sm-full-width:         225px;
-        --sm-full-toggle-width:  223px;
+        --sm-full-toggle-width:  calc(var(--sm-full-width) - 2px);
         /* TODO: The width is 'auto', this is just infered, anything better to do? (other than JS) */
         --sm-small-width:         49px;
-        --sm-small-toggle-width:  48.5px;
+        --sm-small-toggle-width: calc(var(--sm-small-width) - 0.5px);
     }
     body {
         background-color: #FFFFFF;
@@ -97,11 +97,20 @@
         display: none;
     }
 
-    /* There must be a way for Fomantic to do it directly... */
-    .ui.inverted.menu .item.green  { background-color: green; }
+    /* There must be a way for Fomantic to do it directly...? */
+    .ui.inverted.menu .item.red    { background-color: red;    }
     .ui.inverted.menu .item.orange { background-color: orange; }
+    .ui.inverted.menu .item.yellow { background-color: yellow; }
+    .ui.inverted.menu .item.olive  { background-color: olive;  }
+    .ui.inverted.menu .item.green  { background-color: green;  }
+    .ui.inverted.menu .item.teal   { background-color: teal;   }
+    .ui.inverted.menu .item.blue   { background-color: blue;   }
+    .ui.inverted.menu .item.violet { background-color: violet; }
     .ui.inverted.menu .item.purple { background-color: purple; }
-    .ui.inverted.menu .item.red    { background-color: red; }
+    .ui.inverted.menu .item.pink   { background-color: pink;   }
+    .ui.inverted.menu .item.brown  { background-color: brown;  }
+    .ui.inverted.menu .item.grey   { background-color: grey;   }
+    .ui.inverted.menu .item.black  { background-color: black;  }
 
     .ui.cards {
         margin: 0 0 15px 0;

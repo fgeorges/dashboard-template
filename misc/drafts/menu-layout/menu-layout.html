@@ -24,11 +24,14 @@
         --sm-small-toggle-width: calc(var(--sm-small-width) - 0.5px);
         --theme-color-base:      0, 181, 173;
         --theme-color:           rgb(var(--theme-color-base));
+        --theme-sm-chosen:       rgba(var(--theme-color-base), 0.1);
+        --theme-sm-hover:        rgba(var(--theme-color-base), 0.1);
+        --theme-sm-bg:           #fafafa;
     }
 
     /* misc */
     body {
-        background-color: #FFFFFF;
+        background-color: #ffffff;
     }
     .wireframe {
         margin-top: 2em;
@@ -82,19 +85,20 @@
     /* the left side menu */
     .ui.side.menu {
         color: #707070;
-        background-color: #fafafa;
-        overflow: auto;
+        background-color: var(--theme-sm-bg);
+        /* Cannot use overflow auto (to be able to scroll the sidemenu) with the submenus.  See
+           https://discordapp.com/channels/453127116427493376/453165921859665921/665262008593022979
+           and https://jsfiddle.net/sav6kt4n/. */
+        /* overflow: auto; */
         height: 100%;
         margin-top: var(--menu-height);
-    }
-    .ui.inverted.side.menu {
-        background-color: rgb(49, 57, 71);
     }
     .ui.side.menu .item {
         color: #707070;
         font-weight: 700;
     }
-    .ui.side.menu .item > i.icon {
+    .ui.side.menu .item > i.icon,
+    .ui.side.menu .dropdown.item > i.icon {
         width: 1.18em;
         float: left;
         margin: 0 1em 0 0;
@@ -102,10 +106,37 @@
     .ui.side.menu span.item {
         margin-bottom: 100px;
     }
+    /* no separation line between sidemenu items */
+    .ui.vertical.menu .item:before {
+        height: 0px;
+    }
+    /* `active` has a side-effect: submenus are always dispayed, `chosen` replaces it */
+    .ui.menu .item.chosen,
+    .ui.menu .ui.dropdown .menu > .item.chosen {
+        background-color: var(--theme-sm-chosen) !important;
+    }
+    /* submenus */
+    .ui.menu .ui.dropdown .menu {
+        background-color: var(--theme-sm-bg) !important;
+    }
+    .ui.menu .ui.dropdown .menu > .item:hover {
+        background-color: var(--theme-sm-hover) !important;
+    }
+    .ui.menu .ui.dropdown .menu > .item.header {
+        font-weight: bold !important;
+    }
+    .ui.menu .ui.dropdown .menu > .divider {
+        display: block;
+    }
+    /* without this, the submenu to displays when hovering the residual border (of 2px) */
+    .ui.simple.dropdown:not(:hover) > .menu {
+        border: 0;
+    }
+    /* the toggle button at the bottom of the sidemenu */
     .ui.side.menu .toggle.item {
         position: fixed;
         bottom: 0;
-        background-color: #fafafa;
+        background-color: var(--theme-sm-bg);
         border: 1px;
     }
     /* whether the sidemenu is expanded or collapsed */
@@ -127,24 +158,37 @@
 <body>
 
   <div class="ui fixed vertical icon side menu collapsed">
-    <a class="item">
+    <div class="ui simple dropdown item">
       <i class="database icon"></i>
       <span>Foo</span>
-    </a>
-    <a class="item active">
+      <div class="menu">
+        <a class="item header">Databases</a>
+        <span class="divider"></span>
+        <a class="item">Content</a>
+        <a class="item">Schemas</a>
+        <a class="item">Stuff</a>
+      </div>
+    </div>
+    <div class="ui simple dropdown item chosen">
       <i class="hdd outline icon"></i>
       <span>Bar</span>
-    </a>
+      <div class="menu">
+        <a class="item header">Storage</a>
+        <span class="divider"></span>
+        <a class="item">Content</a>
+        <a class="item chosen">Schemas</a>
+        <a class="item">Stuff</a>
+      </div>
+    </div>
     <a class="item">
       <i class="save outline icon"></i>
       <span>Foo bar bla foo bar bla</span>
     </a>
-
     <a class="item">
       <i class="desktop icon"></i>
       <span>Foo</span>
     </a>
-    <a class="item">
+    <a class="item chosen">
       <i class="server icon"></i>
       <span>Bar</span>
     </a>
@@ -213,7 +257,6 @@
       <span>Foo</span>
     </a>
     <span class="item"></span>
-
     <a class="toggle item" onclick="toggleSideMenu()">
       <i class="angle double right icon"></i>
       <span>Collapse menu</span>

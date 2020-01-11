@@ -103,6 +103,16 @@
         float: left;
         margin: 0 1em 0 0;
     }
+    .ui.side.menu.expanded .dropdown.item.chosen .menu {
+        display: none;
+    }
+    .ui.side.menu.collapsed .submenu.item,
+    .ui.side.menu.collapsed .sub.item {
+        display: none;
+    }
+    .ui.side.menu .sub.item > i.icon {
+        margin-left: 1em;
+    }
     .ui.side.menu span.item {
         margin-bottom: 100px;
     }
@@ -115,6 +125,9 @@
     .ui.menu .ui.dropdown .menu > .item.chosen {
         background-color: var(--theme-sm-chosen) !important;
     }
+    .ui.menu.expanded > .dropdown.item.chosen {
+        background-color: inherit !important;
+    }
     /* submenus */
     .ui.menu .ui.dropdown .menu {
         background-color: var(--theme-sm-bg) !important;
@@ -125,10 +138,10 @@
     .ui.menu .ui.dropdown .menu > .item.header {
         font-weight: bold !important;
     }
-    .ui.menu .ui.dropdown .menu > .divider {
     .ui.side.menu.expanded .ui.dropdown .singleton.menu {
         display: none;
     }
+    .ui.side.menu .ui.dropdown .menu > .divider {
         display: block;
     }
     /* without this, the submenu to displays when hovering the residual border (of 2px) */
@@ -183,17 +196,17 @@
         <a class="item">Stuff</a>
       </div>
     </div>
-    <a class="item">
-      <i class="download icon"></i>
-      <span>Foo</span>
+    <a class="sub item">
+      <i class="angle right icon"></i>
+      <span>Content</span>
     </a>
-    <a class="item">
-      <i class="database icon"></i>
-      <span>Foo</span>
+    <a class="sub item chosen">
+      <i class="angle right icon"></i>
+      <span>Schemas</span>
     </a>
-    <a class="item">
-      <i class="hdd outline icon"></i>
-      <span>Bar</span>
+    <a class="sub item">
+      <i class="angle right icon"></i>
+      <span>Stuff</span>
     </a>
     <div class="ui simple dropdown item">
       <i class="save outline icon"></i>

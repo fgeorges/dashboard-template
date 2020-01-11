@@ -14,6 +14,7 @@
   <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.js"></script>
 
   <style type="text/css">
+    /* variables */
     :root {
         --menu-height:            45px;
         --sm-full-width:         225px;
@@ -21,82 +22,21 @@
         /* TODO: The width is 'auto', this is just infered, anything better to do? (other than JS) */
         --sm-small-width:         49px;
         --sm-small-toggle-width: calc(var(--sm-small-width) - 0.5px);
+        --theme-color-base:      0, 181, 173;
+        --theme-color:           rgb(var(--theme-color-base));
     }
+
+    /* misc */
     body {
         background-color: #FFFFFF;
-    }
-    .ui.menu .item img.logo {
-        margin-right: 1.5em;
-    }
-    .ui.dropdown .menu > .header {
-        text-transform: none;
-    }
-    .main.container {
-        margin-top: var(--menu-height);
-        margin-right: 0 !important;
-        padding: 50px;
-        width: auto !important;
-        max-width: 100% !important;
-    }
-    .side-menu-expanded {
-        margin-left: var(--sm-full-width) !important;
-    }
-    .side-menu-collapsed {
-        margin-left: var(--sm-small-width) !important;
     }
     .wireframe {
         margin-top: 2em;
     }
-
-    /* drkm */
-    .ui.menu {
-        height: var(--menu-height);
+    .ui.cards {
+        margin: 0 0 15px 0;
     }
-    .ui.side.menu {
-        color: #707070;
-        background-color: #fafafa;
-        overflow: auto;
-    }
-    .ui.inverted.side.menu {
-        background-color: rgb(49, 57, 71);
-    }
-    .ui.side.menu {
-        height: 100%;
-        margin-top: var(--menu-height);
-    }
-    .ui.side.menu span.item {
-        margin-bottom: 100px;
-    }
-    .ui.side.menu.expanded {
-        width: var(--sm-full-width);
-    }
-    .ui.side.menu .toggle.item {
-        position: fixed;
-        bottom: 0;
-        background-color: #fafafa;
-        border: 1px;
-    }
-    .ui.side.menu.collapsed .toggle.item {
-        width: var(--sm-small-toggle-width);
-    }
-    .ui.side.menu.expanded .toggle.item {
-        width: var(--sm-full-toggle-width);
-    }
-
-    .ui.side.menu .item {
-        color: #707070;
-        font-weight: 700;
-    }
-    .ui.side.menu .item > i.icon {
-        width: 1.18em;
-        float: left;
-        margin: 0 1em 0 0;
-    }
-    .ui.side.menu.collapsed .item > span {
-        display: none;
-    }
-
-    /* There must be a way for Fomantic to do it directly...? */
+    /* surely, there must be a way for Fomantic to do it directly...? */
     .ui.inverted.menu .item.red    { background-color: red;    }
     .ui.inverted.menu .item.orange { background-color: orange; }
     .ui.inverted.menu .item.yellow { background-color: yellow; }
@@ -111,8 +51,75 @@
     .ui.inverted.menu .item.grey   { background-color: grey;   }
     .ui.inverted.menu .item.black  { background-color: black;  }
 
-    .ui.cards {
-        margin: 0 0 15px 0;
+    /* the main panel */
+    .main.container {
+        margin-top: var(--menu-height);
+        margin-right: 0 !important;
+        padding: 50px;
+        width: auto !important;
+        max-width: 100% !important;
+    }
+    /* left margin depends whether the side menu is expanded or collapsed */
+    .side-menu-expanded {
+        margin-left: var(--sm-full-width) !important;
+    }
+    .side-menu-collapsed {
+        margin-left: var(--sm-small-width) !important;
+    }
+
+    /* the top menu */
+    .ui.menu {
+        height: var(--menu-height);
+    }
+    .ui.menu .header.item .icon {
+        color: var(--theme-color);
+        margin-right: 20px;
+    }
+    .ui.dropdown .menu > .header {
+        text-transform: none;
+    }
+
+    /* the left side menu */
+    .ui.side.menu {
+        color: #707070;
+        background-color: #fafafa;
+        overflow: auto;
+        height: 100%;
+        margin-top: var(--menu-height);
+    }
+    .ui.inverted.side.menu {
+        background-color: rgb(49, 57, 71);
+    }
+    .ui.side.menu .item {
+        color: #707070;
+        font-weight: 700;
+    }
+    .ui.side.menu .item > i.icon {
+        width: 1.18em;
+        float: left;
+        margin: 0 1em 0 0;
+    }
+    .ui.side.menu span.item {
+        margin-bottom: 100px;
+    }
+    .ui.side.menu .toggle.item {
+        position: fixed;
+        bottom: 0;
+        background-color: #fafafa;
+        border: 1px;
+    }
+    /* whether the sidemenu is expanded or collapsed */
+    .ui.side.menu.expanded {
+        width: var(--sm-full-width);
+    }
+    .ui.side.menu.collapsed .toggle.item {
+        width: var(--sm-small-toggle-width);
+    }
+    .ui.side.menu.expanded .toggle.item {
+        width: var(--sm-full-toggle-width);
+    }
+    .ui.side.menu.collapsed .item > span {
+        display: none;
     }
   </style>
 
@@ -215,7 +222,7 @@
 
   <div class="ui fixed inverted menu">
     <a class="header item">
-      <i class="big teal pastafarianism icon"></i>
+      <i class="big pastafarianism icon"></i>
       Foo bar
     </a>
     <!--a class="header item" onclick="toggleSideMenu()">

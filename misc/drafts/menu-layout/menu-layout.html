@@ -126,6 +126,9 @@
         font-weight: bold !important;
     }
     .ui.menu .ui.dropdown .menu > .divider {
+    .ui.side.menu.expanded .ui.dropdown .singleton.menu {
+        display: none;
+    }
         display: block;
     }
     /* without this, the submenu to displays when hovering the residual border (of 2px) */
@@ -160,7 +163,7 @@
   <div class="ui fixed vertical icon side menu collapsed">
     <div class="ui simple dropdown item">
       <i class="database icon"></i>
-      <span>Foo</span>
+      <span>Databases</span>
       <div class="menu">
         <a class="item header">Databases</a>
         <span class="divider"></span>
@@ -171,7 +174,7 @@
     </div>
     <div class="ui simple dropdown item chosen">
       <i class="hdd outline icon"></i>
-      <span>Bar</span>
+      <span>Storage</span>
       <div class="menu">
         <a class="item header">Storage</a>
         <span class="divider"></span>
@@ -181,22 +184,6 @@
       </div>
     </div>
     <a class="item">
-      <i class="save outline icon"></i>
-      <span>Foo bar bla foo bar bla</span>
-    </a>
-    <a class="item">
-      <i class="desktop icon"></i>
-      <span>Foo</span>
-    </a>
-    <a class="item chosen">
-      <i class="server icon"></i>
-      <span>Bar</span>
-    </a>
-    <a class="item">
-      <i class="upload icon"></i>
-      <span>Foo bar bla foo bar bla</span>
-    </a>
-    <a class="item">
       <i class="download icon"></i>
       <span>Foo</span>
     </a>
@@ -208,54 +195,100 @@
       <i class="hdd outline icon"></i>
       <span>Bar</span>
     </a>
-    <a class="item">
+    <div class="ui simple dropdown item">
       <i class="save outline icon"></i>
       <span>Foo bar bla foo bar bla</span>
-    </a>
-    <a class="item">
+      <div class="menu">
+        <a class="item header">Foo bar bla foo bar bla</a>
+        <span class="divider"></span>
+        <a class="item">One</a>
+        <a class="item">Two</a>
+        <a class="item">Three</a>
+      </div>
+    </div>
+    <div class="ui simple dropdown item">
       <i class="desktop icon"></i>
       <span>Foo</span>
-    </a>
-    <a class="item">
+      <div class="singleton menu">
+        <a class="item header">Foo</a>
+      </div>
+    </div>
+    <div class="ui simple dropdown item">
       <i class="server icon"></i>
       <span>Bar</span>
-    </a>
-    <a class="item">
-      <i class="upload icon"></i>
-      <span>Foo bar bla foo bar bla</span>
-    </a>
-    <a class="item">
+      <div class="menu">
+        <a class="item header">Bar</a>
+        <span class="divider"></span>
+        <a class="item">One</a>
+        <a class="item">Two</a>
+        <a class="item">Three</a>
+      </div>
+    </div>
+    <div class="ui simple dropdown item">
       <i class="download icon"></i>
       <span>Foo</span>
-    </a>
-    <a class="item">
-      <i class="database icon"></i>
-      <span>Foo</span>
-    </a>
-    <a class="item">
-      <i class="hdd outline icon"></i>
+      <div class="menu">
+        <a class="item header">Foo</a>
+        <span class="divider"></span>
+        <a class="item">One</a>
+        <a class="item">Two</a>
+        <a class="item">Three</a>
+      </div>
+    </div>
+    <div class="ui simple dropdown item">
+      <i class="upload icon"></i>
       <span>Bar</span>
-    </a>
-    <a class="item">
+      <div class="singleton menu">
+        <a class="item header">Bar</a>
+      </div>
+    </div>
+    <div class="ui simple dropdown item">
       <i class="save outline icon"></i>
       <span>Foo bar bla foo bar bla</span>
-    </a>
-    <a class="item">
+      <div class="menu">
+        <a class="item header">Foo bar bla foo bar bla</a>
+        <span class="divider"></span>
+        <a class="item">One</a>
+        <a class="item">Two</a>
+        <a class="item">Three</a>
+      </div>
+    </div>
+    <div class="ui simple dropdown item">
       <i class="desktop icon"></i>
       <span>Foo</span>
-    </a>
-    <a class="item">
+      <div class="singleton menu">
+        <a class="item header">Foo</a>
+      </div>
+    </div>
+    <div class="ui simple dropdown item">
       <i class="server icon"></i>
       <span>Bar</span>
-    </a>
-    <a class="item">
-      <i class="upload icon"></i>
-      <span>Foo bar bla foo bar bla</span>
-    </a>
-    <a class="item">
+      <div class="menu">
+        <a class="item header">Bar</a>
+        <span class="divider"></span>
+        <a class="item">One</a>
+        <a class="item">Two</a>
+        <a class="item">Three</a>
+      </div>
+    </div>
+    <div class="ui simple dropdown item">
       <i class="download icon"></i>
       <span>Foo</span>
-    </a>
+      <div class="singleton menu">
+        <a class="item header">Foo</a>
+      </div>
+    </div>
+    <div class="ui simple dropdown item">
+      <i class="upload icon"></i>
+      <span>Bar</span>
+      <div class="menu">
+        <a class="item header">Bar</a>
+        <span class="divider"></span>
+        <a class="item">One</a>
+        <a class="item">Two</a>
+        <a class="item">Three</a>
+      </div>
+    </div>
     <span class="item"></span>
     <a class="toggle item" onclick="toggleSideMenu()">
       <i class="angle double right icon"></i>

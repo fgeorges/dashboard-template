@@ -1,5 +1,30 @@
 <!DOCTYPE html>
 <html>
+
+  <!--
+      # Dashboard page
+
+      This is a (very) simple template for a dashboard page, with a top-level menu bar, and a side
+      menu bar of the left (with submenus, and collapsable to just icons.)  It also contains simple,
+      clickable cards.
+
+      ## Side menu
+
+      The side menu is an icon menu only when collapsed, and an icon+labels menu when expanded (the
+      button to collapse and expand is at the bottom of the bar.)  It contains submenus as well,
+      which pop up on hovering.
+
+      When expanded, the submenu of the current item is displayed in full in the bar.  Actually, it
+      is done by disabling the submenu itself, and displaying instead items for the same entries (in
+      a slightly different layout to differentiate them.)
+
+      ## data-href
+
+      The data attribute `data-href` can be used to add a link-like behaviour to any element.  It is
+      used on side mneu items (they are divs) and on entire cards (divs as well.)  As it is enabled
+      everywhere it appears, it should be possible to just use it anywhere.
+  -->
+
 <head>
   <!-- Standard Meta -->
   <meta charset="utf-8" />
@@ -31,9 +56,6 @@
     /* misc */
     body {
         background-color: #ffffff;
-    }
-    .wireframe {
-        margin-top: 2em;
     }
     /* surely, there must be a way for Fomantic to do it directly...? */
     .ui.inverted.menu .item.red    { background-color: red;    }
@@ -455,13 +477,6 @@
       vitae. Aliquam ante magna, eleifend non lacus id, rutrum venenatis purus. Integer pretium metus
       at lorem tincidunt, eu porttitor nulla tempor. Phasellus pharetra lorem in mollis
       vehicula. Nullam accumsan dolor quis orci dapibus placerat.</p>
-    <img class="wireframe" src="https://fomantic-ui.com/examples/assets/images/wireframe/media-paragraph.png">
-    <img class="wireframe" src="https://fomantic-ui.com/examples/assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="https://fomantic-ui.com/examples/assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="https://fomantic-ui.com/examples/assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="https://fomantic-ui.com/examples/assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="https://fomantic-ui.com/examples/assets/images/wireframe/paragraph.png">
-    <img class="wireframe" src="https://fomantic-ui.com/examples/assets/images/wireframe/paragraph.png">
   </div>
 
   <script>

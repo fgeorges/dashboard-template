@@ -303,7 +303,7 @@
       </div>
     </div>
     <span class="item"></span>
-    <a class="toggle item" onclick="toggleSideMenu()">
+    <a class="toggle item">
       <i class="angle double right icon"></i>
       <span>Collapse menu</span>
     </a>
@@ -463,7 +463,10 @@
   </div>
 
   <script>
-    function toggleSideMenu() {
+    $(() => $('a.toggle.item').click(toggleSideMenu));
+
+    function toggleSideMenu(event) {
+        event.stopPropagation();
         const menu = $('.ui.side.menu');
         // toggle the collapsed/expanded state
         menu.toggleClass('collapsed expanded icon');

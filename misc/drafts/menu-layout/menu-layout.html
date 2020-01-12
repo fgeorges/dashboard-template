@@ -174,7 +174,7 @@
 <body>
 
   <div class="ui fixed vertical icon side menu collapsed">
-    <div class="ui simple dropdown item">
+    <div class="ui simple dropdown item" data-href="databases">
       <i class="database icon"></i>
       <span>Databases</span>
       <div class="menu">
@@ -185,7 +185,7 @@
         <a class="item">Stuff</a>
       </div>
     </div>
-    <div class="ui simple dropdown item chosen">
+    <div class="ui simple dropdown item chosen" data-href="storage">
       <i class="hdd outline icon"></i>
       <span>Storage</span>
       <div class="menu">
@@ -208,7 +208,7 @@
       <i class="angle right icon"></i>
       <span>Stuff</span>
     </a>
-    <div class="ui simple dropdown item">
+    <div class="ui simple dropdown item" data-href="foo-bar-bla">
       <i class="save outline icon"></i>
       <span>Foo bar bla foo bar bla</span>
       <div class="menu">
@@ -463,7 +463,16 @@
   </div>
 
   <script>
+    $(() => $('*[data-href]').click(dataHrefClick));
     $(() => $('a.toggle.item').click(toggleSideMenu));
+
+    function dataHrefClick(event) {
+        event.stopPropagation();
+        const href = $(this).data('href');
+        console.log(`dataHrefClick: go to ${href}`);
+        // go to the href
+        window.location.assign(href);
+    }
 
     function toggleSideMenu(event) {
         event.stopPropagation();

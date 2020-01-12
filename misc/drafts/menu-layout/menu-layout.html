@@ -35,9 +35,6 @@
     .wireframe {
         margin-top: 2em;
     }
-    .ui.cards {
-        margin: 0 0 15px 0;
-    }
     /* surely, there must be a way for Fomantic to do it directly...? */
     .ui.inverted.menu .item.red    { background-color: red;    }
     .ui.inverted.menu .item.orange { background-color: orange; }
@@ -70,6 +67,9 @@
     }
 
     /* cards */
+    .ui.cards {
+        margin: 0 0 15px 0;
+    }
     .card[data-href] {
         cursor: pointer;
     }
@@ -90,7 +90,7 @@
     .ui.side.menu {
         color: #707070;
         background-color: var(--theme-sm-bg);
-        /* Cannot use overflow auto (to be able to scroll the sidemenu) with the submenus.  See
+        /* Cannot use overflow auto (to be able to scroll the side menu) with the submenus.  See
            https://discordapp.com/channels/453127116427493376/453165921859665921/665262008593022979
            and https://jsfiddle.net/sav6kt4n/. */
         /* overflow: auto; */
@@ -120,7 +120,7 @@
     .ui.side.menu span.item {
         margin-bottom: 100px;
     }
-    /* no separation line between sidemenu items */
+    /* no separation line between side menu items */
     .ui.vertical.menu .item:before {
         height: 0px;
     }
@@ -135,7 +135,29 @@
     .ui.menu.expanded > .dropdown.item.chosen {
         background-color: inherit !important;
     }
-    /* submenus */
+    /* the toggle button at the bottom of the side menu */
+    .ui.side.menu .toggle.item {
+        position: fixed;
+        bottom: 0;
+        background-color: var(--theme-sm-bg);
+        border: 1px;
+    }
+
+    /* whether the side menu is expanded or collapsed */
+    .ui.side.menu.expanded {
+        width: var(--sm-full-width);
+    }
+    .ui.side.menu.collapsed .toggle.item {
+        width: var(--sm-small-toggle-width);
+    }
+    .ui.side.menu.expanded .toggle.item {
+        width: var(--sm-full-toggle-width);
+    }
+    .ui.side.menu.collapsed .item > span {
+        display: none;
+    }
+
+    /* side menu: submenus */
     .ui.menu .ui.dropdown .menu {
         background-color: var(--theme-sm-bg) !important;
     }
@@ -154,26 +176,6 @@
     /* without this, the submenu to displays when hovering the residual border (of 2px) */
     .ui.simple.dropdown:not(:hover) > .menu {
         border: 0;
-    }
-    /* the toggle button at the bottom of the sidemenu */
-    .ui.side.menu .toggle.item {
-        position: fixed;
-        bottom: 0;
-        background-color: var(--theme-sm-bg);
-        border: 1px;
-    }
-    /* whether the sidemenu is expanded or collapsed */
-    .ui.side.menu.expanded {
-        width: var(--sm-full-width);
-    }
-    .ui.side.menu.collapsed .toggle.item {
-        width: var(--sm-small-toggle-width);
-    }
-    .ui.side.menu.expanded .toggle.item {
-        width: var(--sm-full-toggle-width);
-    }
-    .ui.side.menu.collapsed .item > span {
-        display: none;
     }
   </style>
 
@@ -321,10 +323,6 @@
       <i class="big pastafarianism icon"></i>
       Foo bar
     </a>
-    <!--a class="header item" onclick="toggleSideMenu()">
-      <i class="content icon"></i>
-      Toggle menu
-    </a-->
     <div class="right menu">
       <div class="ui simple dropdown item">
         <i class="toolbox icon"></i>

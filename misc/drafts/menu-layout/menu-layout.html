@@ -25,7 +25,6 @@
         --theme-color-base:      0, 181, 173;
         --theme-color:           rgb(var(--theme-color-base));
         --theme-sm-chosen:       rgba(var(--theme-color-base), 0.1);
-        --theme-sm-hover:        rgba(var(--theme-color-base), 0.1);
         --theme-sm-bg:           #fafafa;
     }
 
@@ -68,6 +67,11 @@
     }
     .side-menu-collapsed {
         margin-left: var(--sm-small-width) !important;
+    }
+
+    /* cards */
+    .card[data-href] {
+        cursor: pointer;
     }
 
     /* the top menu */
@@ -133,7 +137,7 @@
         background-color: var(--theme-sm-bg) !important;
     }
     .ui.menu .ui.dropdown .menu > .item:hover {
-        background-color: var(--theme-sm-hover) !important;
+        background-color: var(--theme-sm-chosen) !important;
     }
     .ui.menu .ui.dropdown .menu > .item.header {
         font-weight: bold !important;
@@ -390,7 +394,7 @@
       at lorem tincidunt, eu porttitor nulla tempor. Phasellus pharetra lorem in mollis
       vehicula. Nullam accumsan dolor quis orci dapibus placerat.</p>
     <div class="ui cards">
-      <div class="card">
+      <div class="card" data-href="projects/foo">
         <div class="content">
           <!--img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg"-->
           <div class="header">
@@ -398,7 +402,7 @@
           </div>
           <div class="meta">
             <i class="toolbox icon yellow"></i>
-            Project
+            <code>foo</code>
           </div>
           <div class="description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis nisl pulvinar,
@@ -407,43 +411,40 @@
         </div>
         <div class="extra content">
           <div class="ui two buttons">
-            <a href="foo" class="ui basic grey button">Foo</a>
-            <a href="bar" class="ui basic grey button">Bar</a>
+            <a href="projects/foo/this" class="ui basic button">This</a>
+            <a href="projects/foo/that" class="ui basic button">That</a>
           </div>
         </div>
       </div>
-      <div class="card">
+      <div class="card" data-href="projects/bar">
         <div class="content">
           <div class="header">Bar</div>
           <div class="meta">
             <i class="toolbox icon yellow"></i>
-            Project
+            <code>bar-and-beyond-and-even-longer</code>
           </div>
         </div>
-        <a href="details" class="ui bottom attached button">Go</a>
       </div>
-      <div class="card">
+      <div class="card" data-href="projects/stuff">
         <div class="content">
-          <div class="header">Stuff</div>
+          <div class="header">Project <em>Stuff</em> to conquer the entire Universe</div>
           <div class="meta">
             <i class="toolbox icon yellow"></i>
-            Project — <code>stuff</code>
+            <code>stuff</code>
           </div>
           <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
             quis nisl pulvinar, hendrerit nulla in, venenatis tortor. Morbi vitae fringilla nunc.</div>
         </div>
-        <a href="details" class="ui bottom attached button">Go</a>
       </div>
-      <div class="card">
+      <div class="card" data-href="projects/baz">
         <div class="content">
           <div class="header">Baz</div>
           <div class="meta">
             <i class="toolbox icon yellow"></i>
-            Project
+            <code>baz</code>
           </div>
           <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
         </div>
-        <a href="details" class="ui bottom attached button">Go</a>
       </div>
     </div>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis nisl pulvinar,

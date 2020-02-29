@@ -1,0 +1,160 @@
+/* variables */
+:root {
+    --menu-height:            45px;
+    --sm-full-width:         225px;
+    --sm-full-toggle-width:  calc(var(--sm-full-width) - 2px);
+    /* TODO: The width is 'auto', this is just infered, anything better to do? (other than JS) */
+    --sm-small-width:         49px;
+    --sm-small-toggle-width: calc(var(--sm-small-width) - 0.5px);
+    --theme-color-base:      0, 181, 173;
+    --theme-color:           rgb(var(--theme-color-base));
+    --theme-sm-chosen:       rgba(var(--theme-color-base), 0.1);
+    --theme-sm-bg:           #fafafa;
+}
+
+/* misc */
+body {
+    background-color: #ffffff;
+}
+/* surely, there must be a way for Fomantic to do it directly...? */
+.ui.inverted.menu .item.red    { background-color: red;    }
+.ui.inverted.menu .item.orange { background-color: orange; }
+.ui.inverted.menu .item.yellow { background-color: yellow; }
+.ui.inverted.menu .item.olive  { background-color: olive;  }
+.ui.inverted.menu .item.green  { background-color: green;  }
+.ui.inverted.menu .item.teal   { background-color: teal;   }
+.ui.inverted.menu .item.blue   { background-color: blue;   }
+.ui.inverted.menu .item.violet { background-color: violet; }
+.ui.inverted.menu .item.purple { background-color: purple; }
+.ui.inverted.menu .item.pink   { background-color: pink;   }
+.ui.inverted.menu .item.brown  { background-color: brown;  }
+.ui.inverted.menu .item.grey   { background-color: grey;   }
+.ui.inverted.menu .item.black  { background-color: black;  }
+
+/* the main panel */
+.main.container {
+    margin-top: var(--menu-height);
+    margin-right: 0 !important;
+    padding: 50px;
+    width: auto !important;
+    max-width: 100% !important;
+}
+/* left margin depends whether the side menu is expanded or collapsed */
+.side-menu-expanded {
+    margin-left: var(--sm-full-width) !important;
+}
+.side-menu-collapsed {
+    margin-left: var(--sm-small-width) !important;
+}
+
+/* cards */
+.ui.cards {
+    margin: 0 0 15px 0;
+}
+.card[data-href] {
+    cursor: pointer;
+}
+
+/* the top menu */
+.ui.menu {
+    height: var(--menu-height);
+}
+.ui.menu .header.item .icon {
+    color: var(--theme-color);
+    margin-right: 20px;
+}
+.ui.dropdown .menu > .header {
+    text-transform: none;
+}
+
+/* the left side menu */
+.ui.side.menu {
+    color: #707070;
+    background-color: var(--theme-sm-bg);
+    /* Cannot use overflow auto (to be able to scroll the side menu) with the submenus.  See
+       https://discordapp.com/channels/453127116427493376/453165921859665921/665262008593022979
+       and https://jsfiddle.net/sav6kt4n/. */
+    /* overflow: auto; */
+    height: 100%;
+    margin-top: var(--menu-height);
+}
+.ui.side.menu .item {
+    color: #707070;
+    font-weight: 700;
+}
+.ui.side.menu .item > i.icon,
+.ui.side.menu .dropdown.item > i.icon {
+    width: 1.18em;
+    float: left;
+    margin: 0 1em 0 0;
+}
+.ui.side.menu.expanded .dropdown.item.chosen .menu {
+    display: none;
+}
+.ui.side.menu.collapsed .submenu.item,
+.ui.side.menu.collapsed .sub.item {
+    display: none;
+}
+.ui.side.menu .sub.item > i.icon {
+    margin-left: 1em;
+}
+.ui.side.menu span.item {
+    margin-bottom: 100px;
+}
+/* no separation line between side menu items */
+.ui.vertical.menu .item:before {
+    height: 0px;
+}
+/* `active` has a side-effect: submenus are always dispayed, `chosen` replaces it */
+.ui.menu .item.chosen,
+.ui.menu .item:hover,
+.ui.menu .ui.dropdown .menu > .item.chosen,
+.ui.menu .ui.dropdown .menu > .item:hover,
+.ui.menu.expanded > .dropdown.item.chosen:hover {
+    background-color: var(--theme-sm-chosen) !important;
+}
+.ui.menu.expanded > .dropdown.item.chosen {
+    background-color: inherit !important;
+}
+/* the toggle button at the bottom of the side menu */
+.ui.side.menu .toggle.item {
+    position: fixed;
+    bottom: 0;
+    background-color: var(--theme-sm-bg);
+    border: 1px;
+}
+
+/* whether the side menu is expanded or collapsed */
+.ui.side.menu.expanded {
+    width: var(--sm-full-width);
+}
+.ui.side.menu.collapsed .toggle.item {
+    width: var(--sm-small-toggle-width);
+}
+.ui.side.menu.expanded .toggle.item {
+    width: var(--sm-full-toggle-width);
+}
+.ui.side.menu.collapsed .item > span {
+    display: none;
+}
+
+/* side menu: submenus */
+.ui.menu .ui.dropdown .menu {
+    background-color: var(--theme-sm-bg) !important;
+}
+.ui.menu .ui.dropdown .menu > .item:hover {
+    background-color: var(--theme-sm-chosen) !important;
+}
+.ui.menu .ui.dropdown .menu > .item.header {
+    font-weight: bold !important;
+}
+.ui.side.menu.expanded .ui.dropdown .singleton.menu {
+    display: none;
+}
+.ui.side.menu .ui.dropdown .menu > .divider {
+    display: block;
+}
+/* without this, the submenu to displays when hovering the residual border (of 2px) */
+.ui.simple.dropdown:not(:hover) > .menu {
+    border: 0;
+}

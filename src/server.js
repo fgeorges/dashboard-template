@@ -67,7 +67,7 @@ module.exports = {
         app.use(mount('/fonts',        serve(path.join(params.views, 'fonts'))));
         app.use(mount('/images',       serve(path.join(params.views, 'images'))));
         app.use(mount('/js',           serve(path.join(params.views, 'js'))));
-        app.use(mount('/css',          serve(path.join(params.dist, 'css'))));
+        app.use(mount('/css',          serve(path.join(params.views, 'css'))));
         app.use(mount('/node_modules', serve(path.join(params.dist, 'node_modules'))));
 
         // setup handlebars

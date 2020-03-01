@@ -29,9 +29,11 @@
 
         <div class="ui main text container side-menu-collapsed">
             <h1 class="ui header">{{title}}</h1>
-            {{#block "content"}}
-                Content goes here
-            {{/block}}
+            <div id="content">
+                {{#block "content"}}
+                    Content goes here
+                {{/block}}
+            </div>
             {{#block "footer"}}
                 <!-- maybe at some point... -->
             {{/block}}

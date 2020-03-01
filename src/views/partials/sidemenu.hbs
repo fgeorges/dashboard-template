@@ -3,36 +3,37 @@
     <i class="database icon"></i>
     <span>Databases</span>
     <div class="menu">
-      <a class="item header" href="databases">Databases</a>
+      <a data-pjax="on" class="item header" href="databases">Databases</a>
       <span class="divider"></span>
-      <a class="item" href="databases/content">Content</a>
-      <a class="item" href="databases/schemas">Schemas</a>
-      <a class="item" href="databases/stuff">Stuff</a>
+      <a data-pjax="on" class="item" href="charts">Charts</a>
+      <a data-pjax="on" class="item" href="icons">Icons</a>
+      <a data-pjax="on" class="item" href="databases/stuff">Stuff</a>
     </div>
   </div>
   <div class="ui simple dropdown item chosen" data-href="storage">
     <i class="hdd outline icon"></i>
     <span>Storage</span>
     <div class="menu">
-      <a class="item header" href="storage">Storage</a>
+      <a data-pjax="on" class="item header" href="storage">Storage</a>
       <span class="divider"></span>
-      <a class="item" href="storage/content">Content</a>
-      <a class="item chosen" href="storage/schemas">Schemas</a>
-      <a class="item" href="storage/stuff">Stuff</a>
+      <a data-pjax="on" class="item" href="storage/content">Content</a>
+      <a data-pjax="on" class="item chosen" href="storage/schemas">Schemas</a>
+      <a data-pjax="on" class="item" href="storage/stuff">Stuff</a>
     </div>
   </div>
-  <a class="sub item" href="storage/content">
+  <a data-pjax="on" class="sub item" href="storage/content">
     <i class="angle right icon"></i>
     <span>Content</span>
   </a>
-  <a class="sub item chosen" href="storage/schemas">
+  <a data-pjax="on" class="sub item chosen" href="storage/schemas">
     <i class="angle right icon"></i>
     <span>Schemas</span>
   </a>
-  <a class="sub item" href="storage/stuff">
+  <a data-pjax="on" class="sub item" href="storage/stuff">
     <i class="angle right icon"></i>
     <span>Stuff</span>
   </a>
+  {{! keep adding `data-pjax` attributes hereafter... }}
   <div class="ui simple dropdown item" data-href="foo-bar-bla">
     <i class="save outline icon"></i>
     <span>Foo bar bla foo bar bla</span>

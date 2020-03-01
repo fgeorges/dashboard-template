@@ -26,7 +26,6 @@ $(function(){
         this.debug = window.DEBUG;
         this.navCollapseTimeout = 2500;
         this.$content = $('#content');
-        this.$loaderWrap = $('.loader-wrap');
         this.settings = window.SingSettings;
         this.pageLoadCallbacks = {};
         this.resizeCallbacks = [];
@@ -54,15 +53,15 @@ $(function(){
         if (this.pjaxEnabled){
             /**
              * Initialize pjax & attaching all related events
+             * TODO: Filter where `data-pjax` only equals `on`.
              */
-/*
-            this.$sidebar.find('.sidebar-nav a:not([data-toggle=collapse], [data-no-pjax], [href=\\#])').on('click', $.proxy(this._checkLoading, this));
-            $(document).pjax('#sidebar .sidebar-nav a:not([data-toggle=collapse], [data-no-pjax], [href=\\#], .no-pjax)', '#content', {
+            // TODO: What is this?  Wasn't it only for the (old) sidebar?
+            $('a[data-pjax]').on('click', $.proxy(this._checkLoading, this));
+            $(document).pjax('a[data-pjax]', '#content', {
                 fragment: '#content',
                 type: 'GET', //this.debug ? 'POST' : 'GET' //GET - for production, POST - for debug.
                 timeout: 4000
             });
-*/
 
             $(document).on('pjax:start', $.proxy(this._resetResizeCallbacks, this));
             $(document).on('pjax:send', $.proxy(this.showLoader, this));
@@ -130,22 +129,11 @@ $(function(){
     };
 
     SingAppView.prototype.showLoader = function(){
-        var view = this;
-        this.showLoaderTimeout = setTimeout(function(){
-            view.$loaderWrap.removeClass('hide');
-            setTimeout(function(){
-                view.$loaderWrap.removeClass('hiding');
-            }, 0)
-        }, 200);
+        // ...
     };
 
     SingAppView.prototype.hideLoader = function(){
-        clearTimeout(this.showLoaderTimeout);
-        this.$loaderWrap.addClass('hiding');
-        var view = this;
-        this.$loaderWrap.one(Util.TRANSITION_END, function () {
-            view.$loaderWrap.addClass('hide');
-        }).emulateTransitionEnd(200)
+        // ...
     };
 
     /**

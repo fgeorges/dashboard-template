@@ -336,33 +336,6 @@ $(function(){
 
     window.SingApp = new SingAppView();
 
-    initAppPlugins();
-    initAppFunctions();
-    initAppFixes();
-    initDemoFunctions();
-});
-
-/**
- * Theme functions extracted to independent plugins.
- */
-function initAppPlugins(){
-    /* ========================================================================
-     * Handle transparent input groups focus
-     * ========================================================================
-     */
-    !function($){
-
-        $.fn.transparentGroupFocus = function () {
-            return this.each(function () {
-                $(this).find('.input-group-addon + .form-control').on('blur focus', function(e){
-                    $(this).parents('.input-group')[e.type=='focus' ? 'addClass' : 'removeClass']('focus');
-                });
-            })
-        };
-
-        $('.input-group-transparent, .input-group-no-border').transparentGroupFocus();
-    }(jQuery);
-
     /* ========================================================================
      * Ajax Load links, buttons & inputs
      * loads #data-ajax-target from url provided in data-ajax-load
@@ -386,77 +359,4 @@ function initAppPlugins(){
             return $(e.target).find('input').data('ajax-trigger') != 'change';
         })
     }(jQuery);
-
-
-    /* ========================================================================
-     * Table head check all checkboxes
-     * ========================================================================
-     */
-    !function($){
-        $(document).on('click', 'table th [data-check-all]', function () {
-            $(this).closest('table').find('input[type=checkbox]')
-                .not(this).prop('checked', $(this).prop('checked'));
-        });
-    }(jQuery);
-
-    /* ========================================================================
-     * Animate Progress Bars
-     * ========================================================================
-     */
-    !function($){
-
-        $.fn.animateProgressBar = function () {
-            return this.each(function () {
-                var $bar = $(this);
-                $bar.css('width', $bar.data('width'));
-            })
-        };
-
-        $('.js-progress-animate').animateProgressBar();
-    }(jQuery);
-}
-
-/**
- * Sing required js functions
- */
-function initAppFunctions(){
-}
-
-/**
- * Sing browser fixes. It's always something broken somewhere
- */
-function initAppFixes(){
-}
-
-/**
- * Demo-only functions. Does not affect the core Sing functionality.
- * Should be removed when used in real app.
- */
-function initDemoFunctions(){
-    !function($){
-        $('.theme-helper-toggler').click(() => {
-            $('.theme-helper').toggleClass('theme-helper-opened');
-        });
-        $('#load-notifications-btn').on('ajax-load:end', function () {
-            setTimeout(function(){
-                $('#notifications-list').find('.bg-attention').removeClass('bg-attention');
-            }, 10000)
-        });
-
-        // theme switcher
-        let $darkStyles;
-        $('#css-dark').click(function () {
-            if (!$darkStyles) {
-                $darkStyles = $('<link href="css/application-dark.min.css" rel="stylesheet">').appendTo($('head'));
-            }
-
-            if ($darkStyles[0].isabled)
-                $darkStyles[0].disabled = false;
-        });
-
-        $('#css-light').click(function () {
-            if (!$darkStyles[0].disabled)
-                $darkStyles[0].disabled = true;
-        });
-    }(jQuery);
-}
+});

@@ -1,9 +1,9 @@
 {{#extend "layout" title="Dashboard template"}}
+
     {{#content "sidemenu"}}
         {{> sidemenu active="dashboard"}}
     {{/content}}
-    {{#content "head"}}
-    {{/content}}
+
     {{#content "content" mode="replace"}}
         <p>This is a basic fixed menu template using fixed size containers.</p>
         <p>A text container is used for the main container, which is useful for single column layouts</p>
@@ -76,6 +76,7 @@
           at lorem tincidunt, eu porttitor nulla tempor. Phasellus pharetra lorem in mollis
           vehicula. Nullam accumsan dolor quis orci dapibus placerat.</p>
     {{/content}}
+
     {{#content "scripts"}}
         <script>
           $(initSideMenu);
@@ -127,4 +128,5 @@
         <script src="js/index.js"></script>
 
     {{/content}}
+
 {{/extend}}

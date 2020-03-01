@@ -17,6 +17,10 @@ router.get('/', async (ctx) => {
     });
 });
 
+router.get('/charts', async (ctx) => {
+    return ctx.render('charts');
+});
+
 router.get('/icons', async (ctx) => {
     return ctx.render('icons');
 });

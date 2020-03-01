@@ -74,6 +74,52 @@ $(function(){
         }
 
         window.onerror = $.proxy(this._logErrors, this);
+
+        // ** side menu **
+
+        function initSideMenu() {
+            const state = localStorage.getItem('side-menu-state');
+            if ( ! state ) {
+                localStorage.setItem('side-menu-state', 'collapsed');
+            }
+            else if ( state === 'expanded' ) {
+                toggleSideMenu();
+            }
+        }
+
+        function dataHrefClick(event) {
+            event.stopPropagation();
+            const href = $(this).data('href');
+            console.log(`dataHrefClick: go to ${href}`);
+            // go to the href
+            window.location.assign(href);
+        }
+
+        function toggleSideMenu(event) {
+            event && event.stopPropagation();
+            const menu = $('.ui.side.menu');
+            // toggle the collapsed/expanded state
+            menu.toggleClass('collapsed expanded icon');
+            // handle the toggler item (left/right arrow, and text)
+            menu.find('.item.toggle i').toggleClass('left right');
+            // toggle the state of elements impacted by the side menu collapse/expansion
+            $('.side-menu-collapsed, .side-menu-expanded')
+                .toggleClass('side-menu-collapsed side-menu-expanded');
+            // toggle the state in the local storage (only on an event, not on page init)
+            if ( event ) {
+                const state = localStorage.getItem('side-menu-state');
+                if ( state === 'expanded' ) {
+                    localStorage.setItem('side-menu-state', 'collapsed');
+                }
+                else {
+                    localStorage.setItem('side-menu-state', 'expanded');
+                }
+            }
+        }
+
+        $(initSideMenu);
+        $(() => $('*[data-href]').click(dataHrefClick));
+        $(() => $('a.toggle.item').click(toggleSideMenu));
     };
 
     /**
